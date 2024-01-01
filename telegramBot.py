@@ -10,14 +10,16 @@ logging.basicConfig(
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="o chatgpt killer está ativo")
+    await context.bot.send_message(chat_id=update.effective_chat.id, text="O bot está ativo!")
 
-async def mano(update: Update, context: ContextTypes.DEFAULT_TYPE) -> str:
+
+async def ajuda(update: Update, context: ContextTypes.DEFAULT_TYPE) -> str:
     text = update.message.text.lower()
-    if text.startswith('nossa'):
-        paulista = ['véi mó cota isso ai tio', 'esse bagulho eh loko', 'ah para mano', 'ta loko mano oas idea']
-        texto = random.choice(paulista)
+    if text.startswith('ajuda'):
+        frases = ['Como posso ajudar?', 'O que deseja?', 'Clique no bot para mais informações']
+        texto = random.choice(frases)
         await update.message.reply_text(texto)
+
 
 async def capo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text="A vida é um paraíso, mas os homens não o sabem e não se preocupam em sabê-lo. Decididamente não compreendo por que é mais glorioso bombardear de projéteis uma cidade do que assassinar alguém a machadadas. Não será preferível corrigir, recuperar e educar um ser humano que cortar-lhe a cabeça? A beleza salvará o mundo.")
@@ -32,7 +34,7 @@ async def menny(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def fala(update: Update, context: ContextTypes.DEFAULT_TYPE) -> str:
     text = update.message.text.lower()
     if text.startswith('fala'):
-        falas = ['fala mano', 'fala tio', 'oi', 'manda', 'diga']
+        falas = ['fala mano', 'oi', 'manda', 'diga']
         texto = random.choice(falas)
         await update.message.reply_text(texto)
 
@@ -40,32 +42,32 @@ async def fala(update: Update, context: ContextTypes.DEFAULT_TYPE) -> str:
 async def conquista(update: Update, context: ContextTypes.DEFAULT_TYPE) -> str:
     text = update.message.text.lower()
     if text.startswith('só conquista'):
-        await update.message.reply_text('só conquista mano')
+        await update.message.reply_text('só conquista galera')
 
 
 async def kasino(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text="AEEEEEE KASINAAAAAAAAAAAAAAAAO\nhttps://www.youtube.com/watch?v=LCDaw0QmQQc")
 
 
-async def frodo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> str:
+async def programacao(update: Update, context: ContextTypes.DEFAULT_TYPE) -> str:
     text = update.message.text.lower()
     if text.startswith('frodo'):
-        fotos_frodo = ['https://s.glbimg.com/es/ge/f/300x397/2011/07/28/elano_flickr62.jpg', 
-                       'https://rd1.com.br/wp-content/uploads/2020/05/20200501-rafael_portugal_-_a_multilaser_tem190415_100937.png', 
-                       'https://i.pinimg.com/originals/60/59/14/60591452f4407ae32e07eae4612cfb7d.png',
-                       'https://hollywoodhatesme.files.wordpress.com/2010/08/sideshow-bob.jpg',
-                       'https://www.ogol.com.br/img/jogadores/32/768732_ori__20210402015635_elano.jpg']
-        frodo = random.choice(fotos_frodo)
-        await context.bot.send_photo(chat_id=update.effective_chat.id, photo=frodo)
+        fotos = ['https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+                       'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+                       'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                       'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                       'https://plus.unsplash.com/premium_photo-1661963212517-830bbb7d76fc?q=80&w=1986&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D']
+        foto = random.choice(fotos_frodo)
+        await context.bot.send_photo(chat_id=update.effective_chat.id, photo=foto)
 
 
 if __name__ == '__main__':
     application = ApplicationBuilder().token('6709085556:AAGfST-byO0ttZmkwOCR6Dq6aLQyUcrRAgQ').build()
     
-    mano_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), mano)
+    ajuda_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), ajuda)
     fala_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), fala)
     conquista_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), conquista)
-    frodo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), frodo)
+    programacao_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), programacao)
     start_handler = CommandHandler('start', start)
     capo_handler = CommandHandler('capo', capo)
     menny_handler = CommandHandler('menny', menny)
